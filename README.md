@@ -39,10 +39,6 @@ docker compose up --build
 
 ## Acceso
 
-Acceso como admin en la plataforma:
-usuario: andrey
-contraseña: 12345
-
 http://localhost:8000/productos/
 
 ---
