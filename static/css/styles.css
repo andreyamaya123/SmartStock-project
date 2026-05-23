@@ -1,0 +1,212 @@
+/* ==================================================
+   SMARTSTOCK - ESTILO MODERNO Y PROFESIONAL
+   ================================================== */
+
+/* ===== FUENTE Y FONDO GENERAL ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    margin: 0;
+    padding: 0;
+    color: #1e293b;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: linear-gradient(90deg, #0f172a, #1e3a8a) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.navbar-brand {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+}
+
+.navbar-brand:hover {
+    color: #dbeafe !important;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+    max-width: 1100px;
+}
+
+/* ===== TARJETAS ===== */
+.card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* ===== TÍTULOS ===== */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+/* ===== TEXTOS ===== */
+p {
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 8px 18px;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.btn-success {
+    background: linear-gradient(90deg, #16a34a, #15803d);
+    border: none;
+}
+
+.btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(22, 163, 74, 0.25);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #dc2626, #b91c1c);
+    border: none;
+}
+
+.btn-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(220, 38, 38, 0.25);
+}
+
+.btn-warning {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+    border: none;
+    color: white;
+}
+
+.btn-warning:hover {
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(245, 158, 11, 0.25);
+}
+
+/* ===== FORMULARIOS ===== */
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+input,
+textarea,
+select {
+    border-radius: 10px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 10px 12px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15) !important;
+}
+
+/* ===== TABLAS ===== */
+table {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+thead {
+    background: #0f172a;
+    color: white;
+}
+
+/* ===== ALERTAS ===== */
+.alert {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== LOGIN ===== */
+.login-container {
+    max-width: 420px;
+    margin: 80px auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 1.8rem;
+    color: #1e3a8a;
+}
+
+/* ===== ENLACES ===== */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* ===== ESPACIADO ENTRE BOTONES ===== */
+.btn + .btn {
+    margin-left: 6px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .card-body,
+    form {
+        padding: 1.2rem;
+    }
+
+    .login-container {
+        margin: 30px 15px;
+        padding: 2rem;
+    }
+}
+
+

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+        <!-- Tarjeta principal -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+
+                <!-- Título -->
+                <h1 class="text-center mb-4">Editar Producto</h1>
+
+                <!-- Formulario -->
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <!-- Botones principales -->
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success">
+                            Actualizar Producto
+                        </button>
+
+                        <a href="{% url 'eliminar_producto' producto.id %}"
+                           class="btn btn-danger">
+                            Eliminar Producto
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Botón volver -->
+        <div class="text-center mt-3">
+            <a href="{% url 'lista_productos' %}" class="btn btn-secondary">
+                 Volver al Inventario
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

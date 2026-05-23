@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Encabezado -->
+    <div class="page-header text-center mb-5">
+        <h1 class="page-title">Inventario SmartStock</h1>
+        <p class="page-subtitle">
+            Administra tus productos de forma rápida, organizada y profesional.
+        </p>
+    </div>
+
+    <!-- Botón agregar producto -->
+    {% if user.is_authenticated %}
+    <div class="d-flex justify-content-end mb-4">
+        <a href="{% url 'agregar_producto' %}" class="btn btn-success btn-lg shadow-sm">
+            Agregar Producto
+        </a>
+    </div>
+    {% endif %}
+
+    <div class="d-flex justify-content-end mb-4">
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary btn-lg shadow-sm">
+            Dashboard
+        </a>
+    </div>
+
+    <!-- Lista de productos -->
+    <div class="row">
+        {% for producto in productos %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card product-card h-100">
+
+                <!-- Encabezado -->
+                <div class="card-header product-card-header">
+                    <h4 class="mb-0 fw-bold">
+                        {{ producto.nombre }}
+                    </h4>
+                </div>
+
+                <!-- Cuerpo -->
+                <div class="card-body">
+
+                    <!-- Descripción -->
+                    <p class="text-muted" style="min-height: 70px;">
+                        {{ producto.descripcion }}
+                    </p>
+
+                    <!-- Precio -->
+                    <div class="mb-3">
+                        <span class="badge btn-primary fs-6 px-3 py-2">
+                            Precio: ${{ producto.precio }}
+                        </span>
+                    </div>
+
+                    <!-- Stock -->
+                    <div class="mb-3">
+                        {% if producto.stock > 10 %}
+                            <span class="badge bg-success fs-6 px-3 py-2">
+                                Stock disponible: {{ producto.stock }}
+                            </span>
+                        {% elif producto.stock > 0 %}
+                            <span class="badge bg-warning text-dark fs-6 px-3 py-2">
+                                Stock bajo: {{ producto.stock }}
+                            </span>
+                        {% else %}
+                            <span class="badge bg-danger fs-6 px-3 py-2">
+                                Agotado
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                {% if user.is_authenticated %}
+                <div class="card-footer bg-white border-0 text-end pb-4">
+                    <a href="{% url 'editar_producto' producto.id %}"
+                       class="btn btn-outline-secondary rounded-pill px-4">
+                        Editar
+                    </a>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        {% empty %}
+        <!-- Sin productos -->
+        <div class="col-12">
+            <div class="alert alert-warning text-center shadow rounded-4 p-4">
+                <h4 class="mb-2">No hay productos registrados</h4>
+                <p class="mb-0">Agrega tu primer producto para comenzar.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+    {% block content %}
+
+        <!-- Centrar el formulario -->
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+
+                <!-- Tarjeta -->
+                <div class="card shadow">
+                    <div class="card-body">
+
+                        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            
+                            <button type="submit" class="btn btn-success w-100">Ingresar</button>
+                            
+                            <br><br>
+                            
+                            <a href="{% url 'lista_productos' %}" class="btn btn-secondary w-100">Atrás</a>
+                        </form>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    {% endblock %}
+

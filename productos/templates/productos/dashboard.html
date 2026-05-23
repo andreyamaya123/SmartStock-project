@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Encabezado Principal -->
+    <div class="text-center mb-5">
+        <span class="badge bg-primary-subtle text-primary px-4 py-2 rounded-pill mb-3 fw-semibold">
+            SmartStock Analytics
+        </span>
+
+        <h1 class="page-title mb-3">
+            Dashboard del Inventario
+        </h1>
+
+        <p class="page-subtitle mx-auto" style="max-width: 700px;">
+            Visualice en tiempo real las métricas más importantes del inventario
+            para optimizar el control, la reposición y la gestión de productos.
+        </p>
+    </div>
+
+    <!-- Tarjetas de métricas -->
+    <div class="row g-4 mb-5">
+
+        <!-- Total de Productos -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card product-card border-0 shadow-sm h-100 overflow-hidden">
+                <div class="card-body p-4 text-center">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center
+                                    rounded-circle bg-primary bg-opacity-10"
+                             style="width: 70px; height: 70px;">
+                            <span class="fs-2 fw-bold text-primary">#</span>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">
+                        Total de Productos
+                    </h6>
+
+                    <h2 class="display-4 fw-bold text-primary mb-2">
+                        {{ total_productos }}
+                    </h2>
+
+                    <small class="text-muted">
+                        Productos registrados
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Valor del Inventario -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card product-card border-0 shadow-sm h-100 overflow-hidden">
+                <div class="card-body p-4 text-center">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center
+                                    rounded-circle bg-success bg-opacity-10"
+                             style="width: 70px; height: 70px;">
+                            <span class="fs-2 fw-bold text-success">$</span>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">
+                        Valor Total
+                    </h6>
+
+                    <h2 class="display-6 fw-bold text-success mb-2">
+                        ${{ valor_total }}
+                    </h2>
+
+                    <small class="text-muted">
+                        Valor estimado del inventario
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stock Bajo -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card product-card border-0 shadow-sm h-100 overflow-hidden">
+                <div class="card-body p-4 text-center">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center
+                                    rounded-circle bg-warning bg-opacity-10"
+                             style="width: 70px; height: 70px;">
+                            <span class="fs-3 fw-bold text-warning">!</span>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">
+                        Stock Bajo
+                    </h6>
+
+                    <h2 class="display-4 fw-bold text-warning mb-2">
+                        {{ stock_bajo }}
+                    </h2>
+
+                    <small class="text-muted">
+                        Requieren reposición
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Productos Agotados -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card product-card border-0 shadow-sm h-100 overflow-hidden">
+                <div class="card-body p-4 text-center">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center
+                                    rounded-circle bg-danger bg-opacity-10"
+                             style="width: 70px; height: 70px;">
+                            <span class="fs-3 fw-bold text-danger">×</span>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">
+                        Agotados
+                    </h6>
+
+                    <h2 class="display-4 fw-bold text-danger mb-2">
+                        {{ productos_agotados }}
+                    </h2>
+
+                    <small class="text-muted">
+                        Sin existencias
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Panel de resumen -->
+   <!-- Reemplaza únicamente la sección "Resumen Ejecutivo" por este código -->
+
+<div class="card product-card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-body p-5">
+
+        <div class="row align-items-center">
+
+            <!-- Texto descriptivo -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <span class="badge bg-light text-dark px-3 py-2 rounded-pill mb-3 fw-semibold">
+                    Resumen Ejecutivo
+                </span>
+
+                <h3 class="fw-bold mb-3">
+                    Distribución del Inventario
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Visualice de forma gráfica el estado actual del inventario,
+                    identificando productos disponibles, con stock bajo y agotados.
+                </p>
+
+                <a href="{% url 'lista_productos' %}"
+                   class="btn btn-primary px-4 py-2 rounded-pill shadow-sm me-2 mb-2">
+                    Ver Productos
+                </a>
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'agregar_producto' %}"
+                   class="btn btn-success px-4 py-2 rounded-pill shadow-sm mb-2">
+                    Nuevo Producto
+                </a>
+                {% endif %}
+            </div>
+
+            <!-- Gráfico -->
+            <div class="col-lg-8">
+                <div class="bg-light rounded-4 p-4">
+
+                    <h6 class="text-muted text-uppercase fw-semibold mb-4 text-center">
+                        Estado del Inventario
+                    </h6>
+
+                    <!-- Barra Disponible -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold text-primary">
+                                Productos Disponibles
+                            </span>
+                            <span class="text-muted">
+                                {{ total_productos|add:"-"|add:stock_bajo|add:"-"|add:productos_agotados }}
+                            </span>
+                        </div>
+
+                        <div class="progress" style="height: 12px;">
+                            <div class="progress-bar bg-primary"
+                                 role="progressbar"
+                                 style="width: 70%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barra Stock Bajo -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold text-warning">
+                                Stock Bajo
+                            </span>
+                            <span class="text-muted">
+                                {{ stock_bajo }}
+                            </span>
+                        </div>
+
+                        <div class="progress" style="height: 12px;">
+                            <div class="progress-bar bg-warning"
+                                 role="progressbar"
+                                 style="width: 20%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barra Agotados -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold text-danger">
+                                Agotados
+                            </span>
+                            <span class="text-muted">
+                                {{ productos_agotados }}
+                            </span>
+                        </div>
+
+                        <div class="progress" style="height: 12px;">
+                            <div class="progress-bar bg-danger"
+                                 role="progressbar"
+                                 style="width: 10%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resumen numérico -->
+                    <div class="row text-center mt-4">
+                        <div class="col-4">
+                            <h5 class="fw-bold text-primary mb-1">
+                                {{ total_productos }}
+                            </h5>
+                            <small class="text-muted">Registrados</small>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="fw-bold text-warning mb-1">
+                                {{ stock_bajo }}
+                            </h5>
+                            <small class="text-muted">En alerta</small>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="fw-bold text-danger mb-1">
+                                {{ productos_agotados }}
+                            </h5>
+                            <small class="text-muted">Críticos</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+{% endblock %}

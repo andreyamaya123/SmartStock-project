@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Encabezado -->
+    <div class="page-header text-center mb-5">
+        <h1 class="page-title">Agregar Producto</h1>
+        <p class="page-subtitle">
+            Complete la información del nuevo producto para registrarlo en el inventario.
+        </p>
+    </div>
+
+    <!-- Tarjeta del formulario -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card product-card shadow border-0 rounded-4">
+
+                <!-- Encabezado de la tarjeta -->
+                <div class="card-header bg-white border-0 pt-4 pb-2 px-4">
+                    <h4 class="mb-0 fw-bold text-primary border-start border-4 border-primary ps-3">
+                        Información del Producto
+                    </h4>
+                    <p class="text-muted small mt-2 mb-0 ps-3">
+                        Ingrese los datos requeridos.
+                    </p>
+                </div>
+
+                <!-- Cuerpo -->
+                <div class="card-body p-4 p-md-5">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <!-- Campos del formulario -->
+                        <div class="form-section">
+                            {{ form.as_p }}
+                        </div>
+
+                        <!-- Línea separadora -->
+                        <hr class="my-4">
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'lista_productos' %}"
+                               class="btn btn-outline-secondary px-4 py-2 rounded-pill">
+                                Atrás
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-4 py-2 rounded-pill shadow-sm">
+                                Guardar Producto
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Pie opcional -->
+                <div class="card-footer bg-light border-0 text-center py-3 rounded-bottom-4">
+                    <small class="text-muted">
+                        Los productos registrados estarán disponibles inmediatamente en el inventario.
+                    </small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
