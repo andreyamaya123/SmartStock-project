@@ -25,6 +25,14 @@ Sistema de gestión de inventario desarrollado con Django y Docker.
 
 ## Ejecutar proyecto
 
+## Clonar el repositorio
+
+```bash
+git clone https://github.com/andreyamaya123/SmartStock-project.git
+
+cd SmartStock-project
+```
+
 ### Requisitos
 
 - Docker Desktop
